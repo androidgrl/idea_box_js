@@ -20,6 +20,7 @@ group :development, :test do
   gem 'launchy'
   gem 'web-console', '~> 2.0'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
 end
