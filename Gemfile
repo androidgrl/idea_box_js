@@ -12,7 +12,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
+  gem 'simplecov'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'capybara'
+  gem 'launchy'
   gem 'web-console', '~> 2.0'
+  gem 'database_cleaner'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
 end
