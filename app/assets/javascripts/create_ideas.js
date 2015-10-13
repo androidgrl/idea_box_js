@@ -1,7 +1,7 @@
-//function prependData(data){
-    //console.log(data);
-    //console.log("prepending data");
-//}
+function testLodash(){
+    var template = _.template("Hello {{ name }}!");
+    console.log(template({name: "Mustache"}));
+}
 
 function formData(){
     return {
@@ -12,10 +12,19 @@ function formData(){
     };
 }
 
+function makeIdea(data){
+}
+
 function postData(){
-    $.post('/ideas', formData(), function(data){console.log(data);console.log("posted data");});
+    $.post('/ideas',
+            formData(),
+            function(data){
+                console.log(data);
+                $('#ideas').prepend(makeIdea(data));
+            });
 }
 
 $('docoment').ready(function(){
+    testLodash();
     $('#save').on('click', postData);
 });
