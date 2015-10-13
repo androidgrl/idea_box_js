@@ -9,4 +9,19 @@ describe "Ideas", :type => :feature, :js => true do
 
     expect(page).to have_content("Magic Muffins")
   end
+
+  it "displays all ideas" do
+    visit root_path
+
+    fill_in "title", :with => "Eat Smurfs"
+    fill_in "body", :with => "For the protein"
+    click_link_or_button "Save"
+
+    fill_in "title", :with => "Wireframe"
+    fill_in "body", :with => "Use balsamiq"
+    click_link_or_button "Save"
+
+    expect(page).to have_content("Eat Smurfs")
+    expect(page).to have_content("Wireframe")
+  end
 end

@@ -15,16 +15,17 @@ describe IdeasController do
   context '#index' do
     it 'returns all ideas' do
       Idea.create(title: 'text to braille', body: 'make text to braille program')
+      Idea.create(title: 'meditate', body: 'it is good for the brain')
 
       get :index, format: :json
 
       expect(response).to have_http_status(:ok)
       ideas = JSON.parse(response.body)
-      expect(ideas.count).to eq(1)
+      expect(ideas.count).to eq(2)
 
       idea = ideas.last
-      expect(idea['title']).to eq('text to braille')
-      expect(idea['body']).to eq('make text to braille program')
+      expect(idea['title']).to eq('meditate')
+      expect(idea['body']).to eq('it is good for the brain')
     end
   end
 end
