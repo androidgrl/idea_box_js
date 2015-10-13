@@ -24,7 +24,7 @@ function downButton () {
 }
 
 function makeIdea(data){
-    var compiled = _.template('<li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton() %> <%= editButton() %> <%= upButton() %> <%= downButton() %>');
+    var compiled = _.template("<div class=robot data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton() %> <%= editButton() %> <%= upButton() %> <%= downButton() %></div>");
     var newIdea = compiled({'title': data.title,
                             'body': data.body,
                             'quality': data.quality
@@ -43,6 +43,6 @@ function postData(){
             });
 }
 
-$('docoment').ready(function(){
+$('document').ready(function(){
     $('#save').on('click', postData);
 });
