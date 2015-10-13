@@ -6,6 +6,11 @@ class IdeasController < ApplicationController
     render json: {title: @idea.title, body: @idea.body, id: @idea.id, quality: @idea.quality}
   end
 
+  def index
+    @ideas = Idea.all
+    respond_with @ideas
+  end
+
   private
 
   def ideas_params

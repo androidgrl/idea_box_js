@@ -20,9 +20,9 @@ describe IdeasController do
 
       expect(response).to have_http_status(:ok)
       ideas = JSON.parse(response.body)
-      expect(ideas['ideas'].count).to eq(1)
+      expect(ideas.count).to eq(1)
 
-      idea = ideas['ideas'].last
+      idea = ideas.last
       expect(idea['title']).to eq('text to braille')
       expect(idea['body']).to eq('make text to braille program')
     end
