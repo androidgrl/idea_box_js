@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
 
   def create
     @idea = Idea.create(ideas_params)
-    respond_with @idea
+    render json: {title: @idea.title, body: @idea.body, id: @idea.id, quality: @idea.quality}
   end
 
   private
