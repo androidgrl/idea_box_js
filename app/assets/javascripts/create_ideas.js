@@ -2,11 +2,6 @@ function testLodash(){
     var compiled = _.template('hello <%= user %>!');
     var greet = compiled({ 'user': 'fred' });
     console.log(greet);
-    var floats = [1.2, 1.7, 3.3, 4.4];
-    var grouped = _.groupBy(floats, function(element){
-        return Math.floor(element);
-    });
-    console.log(grouped);
 }
 
 function formData(){
@@ -19,6 +14,12 @@ function formData(){
 }
 
 function makeIdea(data){
+    var compiled = _.template('<li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li>');
+    var newIdea = compiled({'title': data.title,
+                            'body': data.body,
+                            'quality': data.quality
+                        });
+    return newIdea;
 }
 
 function postData(){

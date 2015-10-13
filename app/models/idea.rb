@@ -1,3 +1,3 @@
 class Idea < ActiveRecord::Base
-  enum role: %w(Swill Plausible Genius)
+  enum quality: [:Swill, :Plausible, :Genius]
 end
