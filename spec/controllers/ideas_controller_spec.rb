@@ -11,4 +11,20 @@ describe IdeasController do
       expect(idea_response['body']).to eq('make taro-based pancakes')
     end
   end
+
+  context '#index' do
+    it 'returns all ideas' do
+      Idea.create(title: 'text to braille', body: 'make text to braille program')
+
+      get :index, format: :json
+
+      expect(response).to have_http_status(:ok)
+      ideas = JSON.parse(response.body)
+      expect(ideas['ideas'].count).to eq(1)
+
+      idea = ideas['ideas'].last
+      expect(idea['title']).to eq('text to braille')
+      expect(idea['body']).to eq('make text to braille program')
+    end
+  end
 end
