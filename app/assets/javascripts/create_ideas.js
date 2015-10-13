@@ -1,6 +1,12 @@
 function testLodash(){
-    var template = _.template("Hello {{ name }}!");
-    console.log(template({name: "Mustache"}));
+    var compiled = _.template('hello <%= user %>!');
+    var greet = compiled({ 'user': 'fred' });
+    console.log(greet);
+    var floats = [1.2, 1.7, 3.3, 4.4];
+    var grouped = _.groupBy(floats, function(element){
+        return Math.floor(element);
+    });
+    console.log(grouped);
 }
 
 function formData(){
