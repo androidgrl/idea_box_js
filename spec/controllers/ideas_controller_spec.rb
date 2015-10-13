@@ -4,7 +4,7 @@ describe IdeasController do
   context "#create" do
     it "creates an idea" do
       post :create, format: :json, idea: { title: 'purple pancakes', body: 'make taro-based pancakes' }
-      expect(response).to have_http_status(:created)
+      expect(response).to have_http_status(:ok)
       idea_response = JSON.parse(response.body)
 
       expect(idea_response['title']).to eq('purple pancakes')

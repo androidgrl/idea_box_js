@@ -8,13 +8,13 @@ RSpec.describe Idea, type: :model do
 
   it "has a default quality of swill" do
     idea = Idea.create(title: "say hi", body: "to everyone")
-    expect(idea.quality).to eq(0)
+    expect(idea.quality).to eq("Swill")
   end
 
   it "can change qualities" do
     idea = Idea.create(title: "say hi", body: "to everyone")
-    idea.update_attributes(quality: 1)
+    idea.update_attributes(quality: "Plausible")
 
-    expect(idea.quality).to eq(1)
+    expect(idea.quality).to eq("Plausible")
   end
 end
