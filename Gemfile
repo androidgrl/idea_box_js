@@ -23,5 +23,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
+  gem 'magic_lamp'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
