@@ -8,9 +8,10 @@ describe "Ideas", :type => :feature, :js => true do
     click_link_or_button "Save"
 
     expect(page).to have_content("Magic Muffins")
+    click_on "delete-1"
   end
 
-  it "displays all ideas" do
+  it "displays all ideas in reverse chronological order" do
     visit root_path
 
     fill_in "title", :with => "Eat Smurfs"
@@ -21,7 +22,36 @@ describe "Ideas", :type => :feature, :js => true do
     fill_in "body", :with => "Use balsamiq"
     click_link_or_button "Save"
 
-    expect(page).to have_content("Eat Smurfs")
-    expect(page).to have_content("Wireframe")
+    within all("li")[0] do
+      expect(page).to have_content("Wireframe")
+    end
+
+    within all("li")[3] do
+      expect(page).to have_content("Eat Smurfs")
+    end
+
+    click_on "delete-1"
+    click_on "delete-2"
+  end
+
+  it "truncates the body to 100 characters or less rounded to the nearest word" do
+    visit root_path
+
+    fill_in "title", :with => "Eat Smurfs"
+    fill_in "body", :with => "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mass"
+    click_link_or_button "Save"
+
+    expect(page).to have_content("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean...")
+  end
+
+  it "deletes ideas" do
+    visit root_path
+
+    fill_in "title", :with => "Eat Smurfs"
+    fill_in "body", :with => "For the protein"
+    click_link_or_button "Save"
+    click_on "delete-1"
+
+    expect(page).to_not have_content("Eat Smurfs")
   end
 end

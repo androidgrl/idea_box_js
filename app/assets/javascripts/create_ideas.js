@@ -24,13 +24,26 @@ function downButton () {
 }
 
 function makeIdea(data){
+    var truncatedBody = smartTrim(data.body, 100, " ", "...");
     var compiled = _.template("<div id='<%= id %>' class=idea data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton(id) %> <%= editButton() %> <%= upButton() %> <%= downButton() %></div>");
     var newIdea = compiled({'title': data.title,
-                            'body': data.body,
+                            'body': truncatedBody,
                             'quality': data.quality,
                             'id': data.id
                         });
     return newIdea;
+}
+
+function smartTrim(str, length, delim, appendix) {
+    if (str.length <= length) return str;
+
+    var trimmedStr = str.substr(0, length+delim.length);
+
+    var lastDelimIndex = trimmedStr.lastIndexOf(delim);
+    if (lastDelimIndex >= 0) trimmedStr = trimmedStr.substr(0, lastDelimIndex);
+
+    if (trimmedStr) trimmedStr += appendix;
+    return trimmedStr;
 }
 
 function postData(){
