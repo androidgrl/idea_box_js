@@ -36,7 +36,6 @@ function postData(){
     $.post('/ideas',
             formData(),
             function(data){
-                console.log(data);
                 $('#ideas').prepend(makeIdea(data));
                 $('#title').val('');
                 $('#body').val('');
