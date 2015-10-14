@@ -11,6 +11,12 @@ class IdeasController < ApplicationController
     respond_with @ideas
   end
 
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.destroy
+    render json: {id: @idea.id}
+  end
+
   private
 
   def ideas_params

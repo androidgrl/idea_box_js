@@ -7,8 +7,8 @@ function formData(){
     };
 }
 
-function deleteButton () {
-    return '<button id="delete">Delete</button>';
+function deleteButton (id) {
+    return "<button class='delete' id='delete-" + id +"'>Delete</button>";
 }
 
 function editButton () {
@@ -24,7 +24,7 @@ function downButton () {
 }
 
 function makeIdea(data){
-    var compiled = _.template("<div id='<%= id %>' class=idea data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton() %> <%= editButton() %> <%= upButton() %> <%= downButton() %></div>");
+    var compiled = _.template("<div id='<%= id %>' class=idea data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton(id) %> <%= editButton() %> <%= upButton() %> <%= downButton() %></div>");
     var newIdea = compiled({'title': data.title,
                             'body': data.body,
                             'quality': data.quality,
