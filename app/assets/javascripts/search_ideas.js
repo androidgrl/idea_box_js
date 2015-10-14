@@ -1,20 +1,21 @@
 function searchIdeas () {
     var dis = this.value;
-    console.log(dis);
-    if (dis.length > 0) {
+    var searchString = dis.toString();
+    console.log(searchString);
+    if (searchString.length > 0) {
         $('#ideas').children().each(function (index, idea) {
             var $idea = $(idea);
-            var titleAndBody = $idea.data('title') + $idea.data('body');
+            var titleAndBody = $idea.data('title').toString(); + $idea.data('body').toString();
             console.log(titleAndBody);
-            console.log(dis);
-            if (titleAndBody.indexOf(dis) !== -1) {
+            console.log(searchString);
+            if (titleAndBody.indexOf(searchString) !== -1) {
                 $idea.show();
             } else {
                 $idea.hide();
             }
         });
     } else {
-        $('#ideas').show();
+        $('#ideas').children().show();
     }
 }
 
