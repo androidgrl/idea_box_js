@@ -11,8 +11,8 @@ function deleteButton (id) {
     return "<button class='delete' id='delete-" + id +"'>Delete</button>";
 }
 
-function editButton () {
-    return '<button>Edit</button>';
+function editButton (id) {
+    return "<button class='edit' id='edit-" + id + "'>Edit</button>";
 }
 
 function upButton () {
@@ -25,7 +25,7 @@ function downButton () {
 
 function makeIdea(data){
     var truncatedBody = smartTrim(data.body, 100, " ", "...");
-    var compiled = _.template("<div id='<%= id %>' class=idea data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton(id) %> <%= editButton() %> <%= upButton() %> <%= downButton() %></div>");
+    var compiled = _.template("<div id='<%= id %>' class=idea data-title='<%= title %>' data-body='<%= body %>' data-quality='<%= quality %>'><li>Title: <%= title %> </li><li>Body: <%= body %> </li><li>Quality: <%= quality %></li> <%= deleteButton(id) %> <%= editButton(id) %> <%= upButton() %> <%= downButton() %></div>");
     var newIdea = compiled({'title': data.title,
                             'body': truncatedBody,
                             'quality': data.quality,

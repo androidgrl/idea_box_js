@@ -54,4 +54,20 @@ describe "Ideas", :type => :feature, :js => true do
 
     expect(page).to_not have_content("Eat Smurfs")
   end
+
+  it "edits ideas" do
+    visit root_path
+
+    fill_in "title", :with => "Eat Smurfs"
+    fill_in "body", :with => "For the protein"
+    click_link_or_button "Save"
+    click_on "Edit"
+
+    #expect(response).to have_status(200)
+    fill_in "title", :with => "Eat Popcorn"
+    fill_in "body", :with => "It's healthier and more ethical"
+    click_on "Save"
+
+    expect(page).to have_content("Eat Popcorn")
+  end
 end

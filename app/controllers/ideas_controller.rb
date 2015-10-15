@@ -17,6 +17,10 @@ class IdeasController < ApplicationController
     render json: {id: @idea.id}
   end
 
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+
   private
 
   def ideas_params
