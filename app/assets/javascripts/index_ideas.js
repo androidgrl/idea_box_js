@@ -4,7 +4,7 @@ function loadIdeas () {
         type: 'GET',
         success: function (data) {
             data.forEach(function(idea){
-                $('#ideas').prepend(makeIdea(idea));
+                $('#ideas').append(makeIdea(idea));
             });
         }
     });

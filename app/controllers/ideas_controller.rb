@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   end
 
   def index
-    @ideas = Idea.all
+    @ideas = Idea.newest_first
     respond_with @ideas
   end
 
