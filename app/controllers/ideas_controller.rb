@@ -19,6 +19,13 @@ class IdeasController < ApplicationController
 
   def edit
     @idea = Idea.find(params[:id])
+    respond_with @idea
+  end
+
+  def update
+    @idea = Idea.find(params[:id])
+    @idea.update(ideas_params)
+    redirect_to root_path
   end
 
   private
