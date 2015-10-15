@@ -38,6 +38,16 @@ class IdeasController < ApplicationController
     respond_with @idea
   end
 
+  def down
+    @idea = Idea.find(params[:id])
+    if @idea.quality == "Genius"
+      @idea.update_attributes(quality: "Plausible")
+    elsif @idea.quality == "Plausible"
+      @idea.update_attributes(quality: "Swill")
+    end
+    respond_with @idea
+  end
+
   private
 
   def ideas_params
