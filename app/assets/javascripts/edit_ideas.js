@@ -25,7 +25,6 @@ function editedData(){
     };
 }
 
-
 $('document').ready(function () {
     $('#ideas').delegate('.edit', 'click', editIdea);
     $('#edit').on('click', updateIdea);

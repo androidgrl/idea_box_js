@@ -23,7 +23,7 @@ describe IdeasController do
       ideas = JSON.parse(response.body)
       expect(ideas.count).to eq(2)
 
-      idea = ideas.last
+      idea = ideas.first
       expect(idea['title']).to eq('meditate')
       expect(idea['body']).to eq('it is good for the brain')
     end

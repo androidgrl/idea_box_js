@@ -8,7 +8,8 @@ describe "Ideas", :type => :feature, :js => true do
     click_link_or_button "Save"
 
     expect(page).to have_content("Magic Muffins")
-    click_on "delete-1"
+
+    #click_on "delete-1"
   end
 
   it "displays all ideas in reverse chronological order" do
@@ -30,8 +31,8 @@ describe "Ideas", :type => :feature, :js => true do
       expect(page).to have_content("Eat Smurfs")
     end
 
-    click_on "delete-1"
-    click_on "delete-2"
+    #click_on "delete-1"
+    #click_on "delete-2"
   end
 
   it "truncates the body to 100 characters or less rounded to the nearest word" do
@@ -47,12 +48,14 @@ describe "Ideas", :type => :feature, :js => true do
   it "deletes ideas" do
     visit root_path
 
-    fill_in "title", :with => "Eat Smurfs"
-    fill_in "body", :with => "For the protein"
+    fill_in "title", :with => "Whatever"
+    fill_in "body", :with => "Do anything"
     click_link_or_button "Save"
-    click_on "delete-1"
 
-    expect(page).to_not have_content("Eat Smurfs")
+    idea = Idea.last
+    click_on "delete-#{idea.id}"
+
+    expect(page).to_not have_content("Whatever")
   end
 
   it "edits ideas" do
@@ -61,11 +64,13 @@ describe "Ideas", :type => :feature, :js => true do
     fill_in "title", :with => "Eat Smurfs"
     fill_in "body", :with => "For the protein"
     click_link_or_button "Save"
-    click_on "Edit"
 
-    #expect(response).to have_status(200)
-    fill_in "title", :with => "Eat Popcorn"
-    fill_in "body", :with => "It's healthier and more ethical"
+    idea = Idea.last
+    click_on "edit-#{idea.id}"
+
+    save_and_open_page
+    fill_in "edit-title", :with => "Eat Popcorn"
+    fill_in "edit-body", :with => "It's healthier and more ethical"
     click_on "Save"
 
     expect(page).to have_content("Eat Popcorn")
